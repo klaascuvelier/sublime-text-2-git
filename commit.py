@@ -4,7 +4,7 @@ import os
 
 import sublime
 import sublime_plugin
-from git import GitTextCommand, GitWindowCommand, plugin_file, view_contents, _make_text_safeish
+from .git import GitTextCommand, GitWindowCommand, plugin_file, view_contents, _make_text_safeish
 import add
 
 history = []

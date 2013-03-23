@@ -124,7 +124,7 @@ class CommandThread(threading.Thread):
                 _make_text_safeish(output, self.fallback_encoding), **self.kwargs)
         except subprocess.CalledProcessError, e:
             main_thread(self.on_done, e.returncode)
-        except OSError, e:
+        except OSError as e:
             if e.errno == 2:
                 main_thread(sublime.error_message, "Git binary could not be found in PATH\n\nConsider using the git_command setting for the Git plugin\n\nPATH is: %s" % os.environ['PATH'])
             else:
@@ -167,7 +167,7 @@ class GitCommand(object):
                 result = "WARNING: Current view is dirty.\n\n"
             else:
                 # just asking the current file to be re-opened doesn't do anything
-                print "reverting"
+                print("reverting")
                 position = self.active_view().viewport_position()
                 self.active_view().run_command('revert')
                 do_when(lambda: not self.active_view().is_loading(), lambda: self.active_view().set_viewport_position(position, False))

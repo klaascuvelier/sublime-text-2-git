@@ -1,5 +1,5 @@
 import sublime
-from git import GitWindowCommand
+from .git import GitWindowCommand
 
 
 class GitFlowCommand(GitWindowCommand):
